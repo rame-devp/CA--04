@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://icst.edu.lk/wp-content/uploads/2023/11/cropped-Web-capture_29-11-2023_11353_-32x32.png" sizes="32x32" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICST - International College of Science & Technology</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1, h2, h3, .navbar-brand {
+            font-family: 'Merriweather', 'Times New Roman', Times, serif;
+            letter-spacing: 0.5px;
+        }
+        .navbar {
+            background: #A51C30 !important;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .hero-section {
+            background: url('12345.jpeg') center/cover no-repeat;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-overlay {
+            background: rgba(165,28,48,0.7);
+            position: absolute;
+            inset: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+        }
+        .cta-section {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            padding: 2rem 1.5rem;
+            margin-top: -60px;
+            position: relative;
+            z-index: 3;
+        }
+        .cta-section h2 {
+            color: #A51C30;
+            font-weight: 700;
+        }
+        .why-icst {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+        }
+        .why-icst .fa {
+            color: #A51C30;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .news-section {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .news-card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .testimonial {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .faq-question {
+            cursor: pointer;
+        }
+        .faculty-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .faculty-card img {
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        .research-highlight {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .newsletter-section {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 2rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .accessibility-toolbar {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            border-radius: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            padding: 0.5rem 1rem;
+            z-index: 9999;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .accessibility-toolbar button {
+            border: none;
+            background: #A51C30;
+            color: #fff;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .accessibility-toolbar button:focus {
+            outline: 2px solid #ffd700;
+        }
+        .high-contrast {
+            background: #2d2d2d !important;      /* Changed from #222 to a softer dark */
+            color: #ffe6b3 !important;           /* Softer yellow for text */
+        }
+        .high-contrast .navbar, .high-contrast footer {
+            background: #3a2323 !important;      /* Softer burgundy-black */
+            color: #ffe6b3 !important;
+        }
+        .high-contrast .cta-section,
+        .high-contrast .why-icst,
+        .high-contrast .news-section,
+        .high-contrast .newsletter-section,
+        .high-contrast .faculty-card,
+        .high-contrast .research-highlight,
+        .high-contrast .testimonial {
+            background: #393939 !important;      /* Softer dark for cards/sections */
+            color: #ffe6b3 !important;
+        }
+        .high-contrast .hero-section {
+            background-blend-mode: multiply;
+            background-color: #2d2d2d !important; /* matches dark mode bg */
+            /* Optionally, you can also darken the overlay for better blending: */
+        }
+        .high-contrast .hero-overlay {
+            background: rgba(45,45,45,0.75) !important; /* softer, blends with dark bg */
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .cta-section, .why-icst {
+                margin-top: 0;
+            }
+            .gallery-img {
+                height: 120px;
+            }
+        }
+    </style>
+    <!-- Google Fonts for Merriweather -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Accessibility Toolbar -->
+    <div class="accessibility-toolbar" aria-label="Accessibility Toolbar">
+        <button id="font-plus" title="Increase font size"><i class="fas fa-plus"></i></button>
+        <button id="font-minus" title="Decrease font size"><i class="fas fa-minus"></i></button>
+        <button id="contrast-toggle" title="Toggle high contrast"><i class="fas fa-adjust"></i></button>
+    </div>
+
+    <!-- Logo -->
+    <div style="position: absolute; top: 18px; left: 18px; z-index: 1050;">
+        <img src="ICST-Logo.png" alt="ICST Logo" id="title-image" class="img-fluid" style="max-height: 100px;">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a id="nav-home" class="nav-link active text-white" href="#">Home</a></li>
+                    <li class="nav-item"><a id="nav-about" class="nav-link text-white" href="#">About</a></li>
+                    <li class="nav-item"><a id="nav-faculties" class="nav-link text-white" href="#">Faculties</a></li>
+                    <li class="nav-item"><a id="nav-courses" class="nav-link text-white" href="#">Courses</a></li>
+                    <li class="nav-item"><a id="nav-discover" class="nav-link text-white" href="#">Discover</a></li>
+                    <li class="nav-item"><a id="nav-events" class="nav-link text-white" href="#">Events</a></li>
+                    <li class="nav-item"><a id="nav-rankings" class="nav-link text-white" href="#">Rankings</a></li>
+                    <li class="nav-item"><a id="nav-contact" class="nav-link text-white" href="#">Contact</a></li>
+                    <li class="nav-item">
+                        <a href="http://studentportal.icst.lk" class="nav-link text-warning fw-bold" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-graduation-cap"></i> LMS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Sections -->
+    <div id="section-home">
+        <!-- Hero Section -->
+        <section class="hero-section position-relative" style="overflow:hidden;">
+            <!-- Video background -->
+            <video autoplay muted loop playsinline id="hero-video" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+                <source src="icst.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay" style="z-index:1; position: absolute; inset: 0;"></div>
+            <div class="hero-content" style="position:relative; z-index:2;">
+                <h1>Welcome to International College of Science & Technology</h1>
+                <p>Empowering students to become global leaders through innovation, diversity, and academic excellence.</p>
+                <a href="#" class="btn btn-warning btn-lg fw-bold shadow">Apply Now</a>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <div class="container cta-section text-center mt-5">
+            <h2>Fuel Your Potential at ICST</h2>
+            <p class="lead mb-4">Discover a world of opportunities at our university, where academic excellence meets a vibrant campus life. Join a diverse community of learners and innovators, and take the next step toward your future success.</p>
+            <a href="#" class="btn btn-danger btn-lg mx-2">Explore Programs</a>
+            <a href="#" class="btn btn-outline-danger btn-lg mx-2">Visit Campus</a>
+        </div>
+
+        <!-- Why ICST Section -->
+        <div class="container why-icst text-center">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <i class="fa fa-graduation-cap"></i>
+                    <h4>World-Class Faculty</h4>
+                    <p>Learn from renowned professors and industry leaders dedicated to your success.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <i class="fa fa-briefcase"></i>
+                    <h4>Career Opportunities</h4>
+                    <p>Benefit from strong industry partnerships and a dedicated career services team to launch your future.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <i class="fa fa-lightbulb"></i>
+                    <h4>Innovative Research</h4>
+                    <p>Engage in cutting-edge research and hands-on learning opportunities.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="container my-5">
+            <h2 class="mb-4 text-center" style="color:#A51C30;">Campus Gallery</h2>
+            <div class="row">
+                <div class="col-6 col-md-3 mb-3"><img src="1.jpg" class="gallery-img" alt="Campus 1"></div>
+                <div class="col-6 col-md-3 mb-3"><img src="2.jpg" class="gallery-img" alt="Campus 2"></div>
+                <div class="col-6 col-md-3 mb-3"><img src="3.jpg" class="gallery-img" alt="Campus 3"></div>
+                <div class="col-6 col-md-3 mb-3"><img src="4.jpeg" class="gallery-img" alt="Campus 4"></div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="container my-5">
+            <h2 class="mb-4 text-center" style="color:#A51C30;">Testimonials</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"ICST gave me the confidence and skills to pursue my dreams. The faculty and friends I met here changed my life!"</p>
+                        <strong>- Ayesha, Alumni</strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"The research opportunities and campus life are amazing. I feel prepared for a global career."</p>
+                        <strong>- Malik, Student</strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"ICST's diverse community and supportive environment make it a truly special place to learn and grow."</p>
+                        <strong>- Priya, Graduate</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News & Announcements Section -->
+        <div class="container news-section">
+            <h2 class="mb-4 text-center" style="color:#A51C30;">News & Announcements</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card news-card">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Event 1">
+                        <div class="card-body">
+                            <h5 class="card-title">ICST Science Symposium 2025</h5>
+                            <p class="card-text">Join leading scientists and students for a day of discovery and innovation. <a href="#">Read more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card news-card">
+                        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Event 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Open Day: Explore Our Campus</h5>
+                            <p class="card-text">Prospective students and families are invited to tour our facilities. <a href="#">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card news-card">
+                        <img src="https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Event 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Alumni Spotlight</h5>
+                            <p class="card-text">Celebrating the achievements of our graduates around the world. <a href="#">See stories</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Calendar Section -->
+        <div class="container my-5">
+            <h2 class="mb-4 text-center" style="color:#A51C30;">Events Calendar</h2>
+            <table class="table table-bordered bg-white">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-07-15</td>
+                        <td>Science Symposium</td>
+                        <td>Main Auditorium</td>
+                    </tr>
+                    <tr>
+                        <td>2025-08-01</td>
+                        <td>Open Day</td>
+                        <td>Campus Grounds</td>
+                    </tr>
+                    <tr>
+                        <td>2025-09-10</td>
+                        <td>Alumni Meet</td>
+                        <td>Conference Hall</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Social & Quick Links -->
+        <div class="container my-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+                <div class="social-icons mb-2 mb-md-0">
+                    <a href="https://www.facebook.com/icst.universitypark?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    <a href="https://www.tiktok.com/@icst_university.park?_t=8i5gupFNkIL&_r=1" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok fa-2x"></i></a>
+                    <a href="https://www.instagram.com/icst_universitypark/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram fa-2x"></i></a>
+                </div>
+                <div>
+                    <a href="#" class="btn btn-outline-danger mx-1">Partners</a>
+                    <a href="#" class="btn btn-outline-danger mx-1">Careers</a>
+                    <a href="#" class="btn btn-outline-danger mx-1">Blog</a>
+                    <a href="#" class="btn btn-outline-danger mx-1">Events</a>
+                    <a href="#" class="btn btn-outline-danger mx-1">Fee</a>
+                    <a href="https://icst.edu.lk/gallery" class="btn btn-outline-danger mx-1" target="_blank" rel="noopener noreferrer">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="section-about" style="display:none;">
+        <div class="container my-5">
+            <h2>About ICST</h2>
+            <p>ICST is a leading institution dedicated to academic excellence and innovation. Our mission is to empower students to become global leaders through a commitment to research, diversity, and community engagement.</p>
+            <ul>
+                <li>Founded in 1995</li>
+                <li>Over 10,000 graduates worldwide</li>
+                <li>Accredited by leading educational bodies</li>
+            </ul>
+        </div>
+        <!-- FAQ Section -->
+        <div class="container my-5">
+            <h2 class="mb-4" style="color:#A51C30;">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            How do I apply to ICST?
+                        </button>
+                    </h2>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Visit the Admissions section for detailed application instructions and deadlines.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            What scholarships are available?
+                        </button>
+                    </h2>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ICST offers a range of merit-based and need-based scholarships. See the Admissions section for more details.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                            Where is ICST located?
+                        </button>
+                    </h2>
+                    <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            123 University Park, Colombo, Sri Lanka.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Faculties Section -->
+    <div id="section-faculties" style="display:none;">
+        <div class="container my-5">
+            <h2>Faculties</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="faculty-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dean Engineering">
+                        <h5>Faculty of Engineering</h5>
+                        <p>Dean: Dr. John Silva</p>
+                        <p>Leading programs in Civil, Mechanical, and Electrical Engineering.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="faculty-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dean Science">
+                        <h5>Faculty of Science</h5>
+                        <p>Dean: Prof. Maya Perera</p>
+                        <p>Innovative research in Physics, Chemistry, and Biology.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="faculty-card">
+                        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Dean Arts">
+                        <h5>Faculty of Arts</h5>
+                        <p>Dean: Dr. Ravi Fernando</p>
+                        <p>Programs in Literature, History, and Social Sciences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses Section -->
+    <div id="section-courses" style="display:none;">
+        <div class="container my-5">
+            <h2>Courses</h2>
+            <ul>
+                <li>BSc in Computer Science</li>
+                <li>BEng in Civil Engineering</li>
+                <li>BA in English Literature</li>
+                <li>MSc in Data Science</li>
+                <li>Diploma in Business Administration</li>
+            </ul>
+            <!-- Downloadable Resources -->
+            <div class="mt-4">
+                <h4>Downloadable Resources</h4>
+                <a href="#" class="btn btn-outline-danger btn-sm mb-2"><i class="fa fa-file-pdf"></i> Course Catalog (PDF)</a>
+                <a href="#" class="btn btn-outline-danger btn-sm mb-2"><i class="fa fa-file-pdf"></i> Application Form (PDF)</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discover Section -->
+    <div id="section-discover" style="display:none;">
+        <div class="container my-5">
+            <h2>Discover</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="research-highlight">
+                        <h5>AI for Good Initiative</h5>
+                        <p>ICST researchers are using artificial intelligence to solve real-world problems in healthcare and education.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="research-highlight">
+                        <h5>Green Campus Project</h5>
+                        <p>Our campus sustainability program is leading the way in renewable energy and waste reduction.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Social Media Feed Example (Instagram Embed) -->
+            <div class="mt-5">
+                <h4>Follow Us on Instagram</h4>
+                <iframe src="https://www.instagram.com/icst_universitypark/embed" width="320" height="440" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <div id="section-events" style="display:none;">
+        <div class="container my-5">
+            <h2>Events</h2>
+            <ul>
+                <li>Science Symposium – July 15, 2025</li>
+                <li>Open Day – August 1, 2025</li>
+                <li>Alumni Meet – September 10, 2025</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Rankings Section -->
+    <div id="section-rankings" style="display:none;">
+        <div class="container my-5">
+            <h2>Rankings</h2>
+            <p>ICST is ranked among the top 10 universities in Sri Lanka and recognized internationally for research and teaching excellence.</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="section-contact" style="display:none;">
+        <div class="container my-5">
+            <h2>Contact</h2>
+            <p>Email: info@icst.edu.lk<br>Phone: +94 11 123 4567</p>
+            <!-- Contact Form -->
+            <form class="row g-3 mt-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="col-12">
+                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-danger">Send Message</button>
+                </div>
+            </form>
+            <!-- Map & Directions -->
+            <div class="mt-5">
+                <h4>Find Us</h4>
+                <iframe src="https://www.google.com/maps?q=Colombo,+Sri+Lanka&output=embed" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <!-- Newsletter Signup -->
+        <div class="container newsletter-section mt-5">
+            <h4>Subscribe to Our Newsletter</h4>
+            <form class="row g-3 mt-2">
+                <div class="col-md-8">
+                    <input type="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-danger w-100">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center p-4 mt-4 border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-2 mb-md-0">
+                    <strong>Contact Us</strong><br>
+                    info@icst.edu.lk<br>
+                    +94 11 123 4567
+                </div>
+                <div class="col-md-4 mb-2 mb-md-0">
+                    <strong>Quick Links</strong><br>
+                    <a href="#" class="text-white text-decoration-underline">Admissions</a> |
+                    <a href="#" class="text-white text-decoration-underline">Alumni</a> |
+                    <a href="#" class="text-white text-decoration-underline">Support</a>
+                </div>
+                <div class="col-md-4">
+                    <strong>Location</strong><br>
+                    123 University Park, Colombo, Sri Lanka
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="mb-0">&copy; 2025 ICST. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple tab-like navigation
+        const navItems = [
+            "home", "about", "faculties", "courses", "discover", "events", "rankings", "contact"
+        ];
+        navItems.forEach(item => {
+            document.getElementById('nav-' + item).addEventListener('click', function(e) {
+                e.preventDefault();
+                navItems.forEach(i => {
+                    document.getElementById('section-' + i).style.display = (i === item) ? '' : 'none';
+                    document.getElementById('nav-' + i).classList.toggle('active', i === item);
+                });
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+        });
+
+        // Accessibility Toolbar
+        let fontSize = 16;
+        document.getElementById('font-plus').onclick = function() {
+            fontSize = Math.min(fontSize + 2, 24);
+            document.body.style.fontSize = fontSize + 'px';
+        };
+        document.getElementById('font-minus').onclick = function() {
+            fontSize = Math.max(fontSize - 2, 12);
+            document.body.style.fontSize = fontSize + 'px';
+        };
+        document.getElementById('contrast-toggle').onclick = function() {
+            document.body.classList.toggle('high-contrast');
+        };
+    </script>
+</body>
+</html>
+
